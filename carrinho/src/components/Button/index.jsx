@@ -1,18 +1,24 @@
 import React, { useContext } from 'react';
 import { CartContext } from '../../providers/CartProvider'
-import { UserContext } from '../../providers/UserProvider'
 
 function Button(props) {
-    const contextCart = useContext(CartContext)
-    const contextUser = useContext(UserContext)
+    const { cart, addProduct, removerProduct} = useContext(CartContext)
+    
+    function handleAddProduct() {
+      addProduct('1')
+    }
 
-    console.log(contextCart)
-    console.log(contextUser) 
+    function handleRemoveProduct() {
+      removerProduct('2')
+    }
+
+    console.log(cart)
 
   return (
-    <button type="button">
-        {props.children}
-    </button>
+    <>
+      <button onClick={handleAddProduct}>Adicionar Produto</button>
+      <button onClick={handleRemoveProduct}>Remover Produto</button>
+    </>
   )
 }
 
